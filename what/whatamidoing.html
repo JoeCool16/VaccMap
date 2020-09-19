@@ -1,9 +1,17 @@
+<!DOCTYPE html>
 <html>
-    <head id = "map">temoc is trolling me</head>
-    <head>
-        <script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvM66w1DVL28oYaSX2Dq6s9tlk4vwId-Y&libraries=visualization">
-</script>>
-        <script defer src="./test.js"></script>
-    </head>
+  <head>
+    <title>Simple Map</title>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvM66w1DVL28oYaSX2Dq6s9tlk4vwId-Y&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./test.css" />
+    <script src="./test.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
 </html>
