@@ -41,23 +41,8 @@ function initMap(centerMap, latitude, longitude) {
     
   });
   //DO NOT DELETE THE COMMENT UNDER!!!! REALLY! DO NOT! IT IS NOT A COMMENT!
-  var heatmapData = /* PUT ARRAYLIST HERE <CODE INSERTION POINT>*/ 
-  [
-    new google.maps.LatLng(37.782, -122.447),
-    new google.maps.LatLng(37.782, -122.445),
-    new google.maps.LatLng(37.782, -122.443),
-    new google.maps.LatLng(37.782, -122.441),
-    new google.maps.LatLng(37.782, -122.439),
-    new google.maps.LatLng(37.782, -122.437),
-    new google.maps.LatLng(37.782, -122.435),
-    new google.maps.LatLng(37.785, -122.447),
-    new google.maps.LatLng(37.785, -122.445),
-    new google.maps.LatLng(37.785, -122.443),
-    new google.maps.LatLng(37.785, -122.441),
-    new google.maps.LatLng(37.785, -122.439),
-    new google.maps.LatLng(37.785, -122.437),
-    new google.maps.LatLng(37.785, -122.435)
-  ];
+  var heatmapData = /* PUT ARRAYLIST HERE <CODE INSERTION POINT>*/  [{location: new google.maps.LatLng(35.869999999999997, -84.67), weight: 39}, {location: new google.maps.LatLng(33.83, -101.84), weight: 1704}, {location: new google.maps.LatLng(45.73, -110.22), weight: 36}, ];
+ 
   var heatmap = new google.maps.visualization.HeatmapLayer({
   data: heatmapData
    });
