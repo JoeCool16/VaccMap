@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.io.FileWriter;
 
 class CSVREADER {
 
@@ -40,14 +41,40 @@ class CSVREADER {
                 toRemove.add(key);
                 continue;
             }
-            System.out.print(key + " ");
-            for (int i = 0; i < 3; i++) {
-                System.out.print(fileString.get(key)[i] + " ");
+
+
+        }
+        File javascript = new File("test.js");
+        Scanner javascriptScanner = new Scanner(javascript);
+        ArrayList<String> code = new ArrayList<>();
+        while (javascriptScanner.hasNextLine()) {
+            String line = javascriptScanner.nextLine();
+            if (line.contains("<CODE INSERTION POINT>")) {
+                line += "[";
+                int counter = 0;
+                for (String key : fileString.keySet()) {
+                    counter++;
+                    line += "{location: new google.maps.LatLng(" + fileString.get(key)[1] + ", " + fileString.get(key)[2] + "), weight: " + fileString.get(key)[0] + "}, ";
+                }
+                line += "];";
             }
-            System.out.println();
+            code.add(line);
+
         }
 
-    }
+        try {
+            FileWriter fw = new FileWriter("test.js");
+            for (int i = 0; i < code.size(); i++) {
+                System.out.println(code.get(i));
+                fw.write(code.get(i) + "\n");
+            }
+            fw.close();
 
+        } catch (Exception e) {
+            System.out.println("RIP CODE!");
+        }
+
+
+    }
 }
 
