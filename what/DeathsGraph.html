@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="button.css">
+
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script type="text/javascript">
+
+        window.onload = function () {
+	        var chart = new CanvasJS.Chart("chartContainer", {
+		        title:{
+			        text: "COUNTIES WITH HIGHEST COVID-19 DEATH COUNTS"              
+		},
+        data: [  //array of dataSeries     
+            { 
+       type: "column",
+       dataPoints: [
+       { label: "New York City", y: 23744 },
+       { label: "Los Angeles", y: 6197 },
+       { label: "Cook", y: 5128 },                                    
+       { label: "Maricopa", y: 3158 },
+       { label: "Maricopa", y: 2943 },
+       { label: "Miame-Dade", y: 2882 },
+       { label: "Nassau", y: 2706 },
+       { label: "Harris", y: 2414 },
+       { label: "Essex", y: 2123 },                                    
+       { label: "Middlesex", y: 2102 },
+       { label: "Bergen", y: 2046 },
+       { label: "Suffolk", y: 2044 },
+       { label: "Philadelphia", y: 1784 },
+       { label: "Westchester", y: 1579 },                                    
+       { label: "Hudson", y: 1512 },
+       { label: "Hartford", y: 1430 },
+       { label: "Fairfield", y: 1418 },
+       { label: "Hidalgo", y: 1381 },
+       { label: "Union", y: 1355 },                                    
+       { label: "Broward", y: 1279 }
+       ]
+     }
+    ]    
+  });
+
+chart.render();
+}
+        </script>
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 450px; width: 100%;"></div>
+        <big><p>The above graph and heatmap were made from the New York Times' database of COVID-19 data from the United States. Based off of the top twenty counties for cumulative COVID-19 deaths, medical companies should first distribute their future vaccine to the east coast, specifically targeting Florida and the North-East/New England areas.</p></big>
+        <a href="DeathsMap.html" class="navlink">Back to Deaths HeatMap</a>
+    </body>
+</html>

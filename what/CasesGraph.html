@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="button.css">
+
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script type="text/javascript">
+
+        window.onload = function () {
+	        var chart = new CanvasJS.Chart("chartContainer", {
+		        title:{
+			        text: "COUNTIES WITH HIGHEST COVID-19 CASES"              
+		},
+        data: [  //array of dataSeries     
+            { 
+       type: "column",
+       dataPoints: [
+       { label: "Los Angeles", y: 253176 },
+       { label: "New York City", y: 242242 },
+       { label: "Miami-Dade", y: 163789 },                                    
+       { label: "Maricopa", y: 137292 },
+       { label: "Cook", y: 134352 },
+       { label: "Harris", y: 115149 },
+       { label: "Dallas", y: 78511 },
+       { label: "Broward", y: 74273 },                                    
+       { label: "Clark", y: 62402 },
+       { label: "Riverside", y: 55073 },
+       { label: "Orange", y: 51936 },
+       { label: "San Bernardino", y: 50543 },
+       { label: "Bexar", y: 48210 },                                    
+       { label: "Nassau", y: 45633 },
+       { label: "Suffolk", y: 45615 },
+       { label: "Tarrant", y: 44140 },
+       { label: "Palm Beach", y: 43871 },
+       { label: "San Diego", y: 42477 },                                    
+       { label: "Hillsborough", y: 39298 },
+       { label: "Westchester", y: 37485 }
+       ]
+     }
+
+    ]    
+  });
+
+chart.render();
+}
+        </script>
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 450px; width: 100%;"></div>
+        <big><p>The above graph and heatmap were made from the New York Times' database of COVID-19 data from the United States. Based off of the top twenty counties for cumulative COVID-19 cases, medical companies should first distribute their future vaccine to Southern California, New York, Southern Florida, and Central Texas.</p></big>
+        <a href="CasesMap.html" class="navlink">Back to Cases HeatMap</a>
+    </body>
+</html>
