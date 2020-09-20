@@ -59,11 +59,8 @@ class CSVREADER {
             String line = javascriptScanner.nextLine();
             if (line.contains("<CODE INSERTION POINT>")) {
                 line += " [";
-                int counter = 0;
                 for (String key : fileString.keySet()) {
-                    if(counter == 3){break;}
-                    line += "{location: new google.maps.LatLng(" + fileString.get(key)[1] + ", " + fileString.get(key)[2] + "), weight: " + fileString.get(key)[0] + "}, ";
-					counter++;
+                    line += "{location: new google.maps.LatLng(" + fileString.get(key)[1] + ", " + fileString.get(key)[2] + "), weight: " +  Math.sqrt(Double.parseDouble(fileString.get(key)[0])) + "}, ";
                 }
                 line += "];";
             }
