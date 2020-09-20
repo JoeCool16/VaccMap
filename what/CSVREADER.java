@@ -40,7 +40,7 @@ class CSVREADER {
         }
         ArrayList<String> toRemove = new ArrayList<>();
         for (String key : keySet) {
-            if (fileString.get(key).contains(null)) {
+            if (fileString.get(key)[2] == null) {
                 toRemove.add(key);
                 continue;
             }
@@ -70,7 +70,9 @@ class CSVREADER {
             code.add(line);
 
         }
-		
+        for (int i = 0; i < code.size(); i++) {
+            System.out.println(code.get(i));
+        }
 		
 		System.out.println(fileString.size());
 
