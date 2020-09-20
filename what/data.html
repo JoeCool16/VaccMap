@@ -7,26 +7,44 @@
         window.onload = function () {
 	        var chart = new CanvasJS.Chart("chartContainer", {
 		        title:{
-			        text: "COUNTIES WITH HIGHEST CASES PER 100,000 PEOPLE"              
+			        text: "COUNTIES WITH HIGHEST CASES AND DEATH RATES"              
 		},
-		    data: [{
-			// Change type to "doughnut", "line", "splineArea", etc.
-			    type: "column",
-			    dataPoints: [
-				    { label: "Trousdale, Tenn",  y: 14593  },
-				    { label: "Lake, Tenn", y: 9620  },
-				    { label: "Dakota, Neb", y: 8466  },
-				    { label: "Lincoln, Ark.",  y: 7313  },
-				    { label: "Buena Vista, Iowa",  y: 7192  }
-			    ]
-		    }]
-	        });
-	        chart.render();
-        }
+        data: [  //array of dataSeries     
+            { 
+       type: "column",
+       name: "Cases",
+       showInLegend: true,
+       dataPoints: [
+       { label: "county1", y: 10000 },
+       { label: "county2", y: 9000 },
+       { label: "county3", y: 8000 },                                    
+       { label: "county4", y: 5000 },
+       { label: "county5", y: 2000 }
+       ]
+     },
+
+     { //dataSeries - second quarter
+
+      type: "column",
+      name: "Deaths", 
+      showInLegend: true,               
+      dataPoints: [
+       { label: "county1", y: 250 },
+       { label: "county2", y: 120 },
+       { label: "county3", y: 80 },                                    
+       { label: "county4", y: 74 },
+       { label: "county5", y: 32 }
+      ]
+    }
+    ],    
+  });
+
+chart.render();
+}
         </script>
     </head>
     <body>
-        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        <div id="chartContainer" style="height: 750px; width: 100%;"></div>
         <h1><a href="whatamidoing.html">Back to VaccMap</a></h1>
     </body>
 </html>
