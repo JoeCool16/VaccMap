@@ -6,6 +6,8 @@ import java.util.*;
 import java.io.FileWriter;
 
 class CSVREADER {
+    public static int DEATHS = 5;
+    public static int CASES = 4;
     public static String stringTOP(TreeMap<Long, ArrayList<String>> map, int numberofTop) {
         HashSet<String> duplicates = new HashSet<>();
         String answer = "";
@@ -52,15 +54,19 @@ class CSVREADER {
             while (reader.hasNextLine()) {
                 String[] line = reader.nextLine().toLowerCase().split(",");
                 fileString.put(line[1], new String[3]);
-                fileString.get(line[1])[0] = line[4];
+                fileString.get(line[1])[0] = line[DEATHS];
+
                 topCases.putIfAbsent(Long.parseLong(line[4]), new ArrayList<String>());
                 topCases.get(Long.parseLong(line[4])).add(line[1]);
                 topDeaths.putIfAbsent(Long.parseLong(line[5]), new ArrayList<String>());
                 topDeaths.get(Long.parseLong(line[5])).add(line[1]);
             }
+         /*
             System.out.println(stringTOP(topCases,20));
             System.out.println(stringTOP(topDeaths,20));
-		/*
+		*/
+
+            //gets latitude and longitude of county
         Set<String> keySet = fileString.keySet();
         while (countiesReader.hasNextLine()) {
             String[] line = countiesReader.nextLine().toLowerCase().split(",");
@@ -82,12 +88,13 @@ class CSVREADER {
 
 
         }
-		
+		// removes any counties with no lat or long
 		for(String key: toRemove){
 			fileString.remove(key);
 		}
-		
-        File javascript = new File("test.js");
+		String fileName = "deathsJS.js";
+		//code insertion
+        File javascript = new File(fileName);
         Scanner javascriptScanner = new Scanner(javascript);
         ArrayList<String> code = new ArrayList<>();
         while (javascriptScanner.hasNextLine()) {
@@ -110,7 +117,7 @@ class CSVREADER {
 		System.out.println(fileString.size());
 
         try {
-            FileWriter fw = new FileWriter("test.js");
+            FileWriter fw = new FileWriter(fileName);
             for (int i = 0; i < code.size(); i++) {
                 System.out.println(code.get(i));
                 fw.write(code.get(i) + "\n");
@@ -120,7 +127,7 @@ class CSVREADER {
         } catch (Exception e) {
             System.out.println("RIP CODE!");
         }
-*/
+
 
         }
     }
