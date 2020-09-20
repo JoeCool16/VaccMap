@@ -6,26 +6,61 @@ import java.util.*;
 import java.io.FileWriter;
 
 class CSVREADER {
+    public static String stringTOP(TreeMap<Long, ArrayList<String>> map, int numberofTop) {
+        HashSet<String> duplicates = new HashSet<>();
+        String answer = "";
+        boolean number =false;
+        int counter = 0;
+        for (long key : map.keySet()) {
+            if (counter == numberofTop) {
+                break;
+            }
+            for (String stringCounty : map.get(key)) {
+                if (!duplicates.contains(stringCounty)) {
+                    duplicates.add(stringCounty);
+                    answer += stringCounty + " ";
+                    counter++;
+                    number = true;
+                }
+                if (number) {
+                    answer += key + "\n";
+                    number = false;
+                }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("COVID19_Data\\us_counties_covid19_daily.csv");
-        File county = new File("County_Coords_CSV.csv");
-		
-        if (!file.isFile()) {
-            System.out.println("This is the problem!");
+            }
+
         }
-		
-        Scanner countiesReader = new Scanner(county);
-        countiesReader.nextLine();
-        Scanner reader = new Scanner(file);
-        HashMap<String, String[]> fileString = new HashMap<>();
-        ArrayList<String[]> todaysData = new ArrayList<>();
-        while (reader.hasNextLine()) {
-            String[] line = reader.nextLine().toLowerCase().split(",");
-            fileString.put(line[1], new String[3]);
-            fileString.get(line[1])[0] = line[4];
-        }
-		
+        return answer;
+    }
+
+        public static void main (String[]args) throws FileNotFoundException {
+            File file = new File("COVID19_Data\\us_counties_covid19_daily.csv");
+            File county = new File("County_Coords_CSV.csv");
+
+            if (!file.isFile()) {
+                System.out.println("This is the problem!");
+            }
+
+            Scanner countiesReader = new Scanner(county);
+            countiesReader.nextLine();
+            Scanner reader = new Scanner(file);
+            reader.nextLine();
+            HashMap<String, String[]> fileString = new HashMap<>();
+            ArrayList<String[]> todaysData = new ArrayList<>();
+            TreeMap<Long, ArrayList<String>> topCases = new TreeMap<>(Collections.reverseOrder());
+            TreeMap<Long, ArrayList<String>> topDeaths = new TreeMap<>(Collections.reverseOrder());
+            while (reader.hasNextLine()) {
+                String[] line = reader.nextLine().toLowerCase().split(",");
+                fileString.put(line[1], new String[3]);
+                fileString.get(line[1])[0] = line[4];
+                topCases.putIfAbsent(Long.parseLong(line[4]), new ArrayList<String>());
+                topCases.get(Long.parseLong(line[4])).add(line[1]);
+                topDeaths.putIfAbsent(Long.parseLong(line[5]), new ArrayList<String>());
+                topDeaths.get(Long.parseLong(line[5])).add(line[1]);
+            }
+            System.out.println(stringTOP(topCases,20));
+            System.out.println(stringTOP(topDeaths,20));
+		/*
         Set<String> keySet = fileString.keySet();
         while (countiesReader.hasNextLine()) {
             String[] line = countiesReader.nextLine().toLowerCase().split(",");
@@ -67,6 +102,7 @@ class CSVREADER {
             code.add(line);
 
         }
+
         for (int i = 0; i < code.size(); i++) {
             System.out.println(code.get(i));
         }
@@ -84,8 +120,9 @@ class CSVREADER {
         } catch (Exception e) {
             System.out.println("RIP CODE!");
         }
+*/
 
-
+        }
     }
-}
+
 
