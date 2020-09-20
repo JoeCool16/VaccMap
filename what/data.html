@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-       
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script type="text/javascript">
+
+        window.onload = function () {
+	        var chart = new CanvasJS.Chart("chartContainer", {
+		        title:{
+			        text: "COUNTIES WITH HIGHEST CASES PER 100,000 PEOPLE"              
+		},
+		    data: [{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			    type: "column",
+			    dataPoints: [
+				    { label: "Trousdale, Tenn",  y: 14593  },
+				    { label: "Lake, Tenn", y: 9620  },
+				    { label: "Dakota, Neb", y: 8466  },
+				    { label: "Lincoln, Ark.",  y: 7313  },
+				    { label: "Buena Vista, Iowa",  y: 7192  }
+			    ]
+		    }]
+	        });
+	        chart.render();
+        }
+        </script>
     </head>
     <body>
-        <p> yo </p>
-        <h1></h1><a href="whatamidoing.html">Back to VaccMap</a></h1>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        <h1><a href="whatamidoing.html">Back to VaccMap</a></h1>
     </body>
 </html>
